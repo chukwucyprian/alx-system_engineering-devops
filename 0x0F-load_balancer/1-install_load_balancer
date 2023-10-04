@@ -7,35 +7,15 @@ sudo apt-get install -y haproxy
 # Listen to web_1 and web_2 servers                                                                                                                                                                                     
 
 echo "
-frontend load_balancer
-   bind *:80
-   mode http
+frontend cypriancodes.tech
+   bind 0:80
    default_backend webservers
 
 backend webservers
    balance roundrobin
-   option httpclose
-   option forwardfor
    server 333528-web-01 18.235.234.60:80 check
    server 333528-web-02 18.207.140.208:80 check
-" | sudo tee /etc/haproxy/my_load_balancer.cfg
+   " >> /etc/haproxy/haproxy.cfg
 
-
-
-# Enable HAProxy service
-sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
-
-# Restart HAProxy service
-sudo service haproxy restart
-
-# Allow HAProxy through the firewall (if ufw is installed)
-sudo ufw allow 'Nginx HTTP'
-
-# Ensure HAProxy starts on boot
-sudo systemctl enable haproxy
-
-# Display HAProxy status
-sudo service haproxy status
-
-echo "HAProxy has been installed and configured. Verify the configuration and start using it for load balancing."
-
+   # Restart HAproxy service
+service haproxy restart
