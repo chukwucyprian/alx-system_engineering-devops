@@ -36,11 +36,11 @@ defaults
 
 frontend cypriancodes.tech
         bind 0:80
-        bind 0:443 ssl crt /etc/ssl/private/cypriancodes.tech.pem
+        bind 0:443 ssl crt /etc/haproxy/certs/www.cypriancodes.tech.pem
         http-request redirect scheme https code 301 unless { ssl_fc }
-        default_backend app_servers
+        default_backend  www_backend
 
-backend app_servers
+backend  www_backend
         balance roundrobin
         server 333528-web-01 18.235.234.60:80 check
         server 333528-web-01 18.207.140.2086:80 check
