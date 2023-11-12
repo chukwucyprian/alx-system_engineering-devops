@@ -1,21 +1,22 @@
-### Postmortem
---------------
+POSTMORTEM
+----------
 
-## The Great "Phantom 'P'" Chase - ALX's System Engineering Odyssey Unveiled! 🚀
+# The Great "Phantom 'P'" Chase - ALX's System Engineering Odyssey Unveiled! 🚀
 
-# Incident Overview:
+Incident Overview:
+-----------------
 
-# Duration:
+Duration:
 -----------
 
 Commencing on the morning of the release of ALX's System Engineering & DevOps project 0x19 at approximately 06:00 West African Time (WAT) in Nigeria, the incident persisted until resolution around 19:20 PST, spanning several hours of unexpected downtime.
 
-# Symptoms:
+Symptoms:
 ----------
 
 The Apache web server within an isolated Ubuntu 14.04 container went rogue, responding to innocent GET requests with a rebellious 500 Internal Server Error instead of serving up the expected HTML file for a Holberton WordPress site.
 
-#Debugging Odyssey:
+Debugging Odyssey:
 ------------------
 
 Our intrepid bug debugger, Bamidele (aka Lexxyla, master of impromptu aliases), embarked on a quest around 19:20 PST to unveil the mysteries behind the unruly Apache server.
@@ -54,13 +55,13 @@ Celebration ensued as another curl test returned a splendid 200 OK response.
 Wrote a Puppet manifest (0-strace_is_your_friend.pp) to automate fixing similar errors.
 The manifest surgically replaces any 'phpp' extensions in /var/www/html/wp-settings.php with 'php'.
 
-# Root Cause and Resolution:
+ Root Cause and Resolution:
 --------------------------
 
 A classic typo! The WordPress app stumbled upon a critical error in wp-settings.php when attempting to load the non-existent file class-wp-locale.phpp. The correct file, located in the wp-content directory, was class-wp-locale.php. The solution? A simple snip, removing the trailing 'p'.
 
-# Preventive Measures:
----------------------
+Preventive Measures:
+--------------------
 
 * Thorough Testing:
 
@@ -74,7 +75,7 @@ Implement uptime monitoring services such as UptimeRobot to instantly alert in c
 
 Leveraged automation with the Puppet manifest (0-strace_is_your_friend.pp) to swiftly address identical errors automatically.
 
-# Conclusion:
--------------
+Conclusion:
+-----------
 
 In the grand drama of system engineering and DevOps, even the mightiest can fall due to a humble typo. Lessons learned, automation embraced, and the confidence that, as programmers, we are impervious to future errors (wink, wink). The web server may have stumbled, but ALX's project emerged victorious in the end, ready for the next challenge that the digital frontier may throw our way!
