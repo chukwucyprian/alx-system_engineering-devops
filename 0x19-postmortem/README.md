@@ -1,7 +1,7 @@
 POSTMORTEM
 ----------
 
-# The Great "Phantom 'P'" Chase - ALX's System Engineering Odyssey Unveiled! 🚀
+The Great "Phantom 'P'" Chase - ALX's System Engineering Odyssey Unveiled! 🚀
 
 Incident Overview:
 -----------------
